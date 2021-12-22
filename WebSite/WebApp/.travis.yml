@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- "8"
+- "10"
+- "12"
+branches:
+  only:
+  - master
+  - development
+  - /^release\/v.*$/
+script:
+- npm install -g grunt-cli
+- npm install
+- node_modules/bower/bin/bower install
+- cp Gruntfile.default.js Gruntfile.js
+- node_modules/.bin/grunt ci
